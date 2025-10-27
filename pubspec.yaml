@@ -1,0 +1,89 @@
+name: medi
+description: "MediAI is a Flutter application designed to provide intelligent healthcare solutions using modern mobile technologies."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.0
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  get: ^4.7.2
+  dio: any
+  flutter_easyloading: any
+  flutter_screenutil: any
+#  google_fonts: any
+  logger: any
+  connectivity_plus: ^6.1.4
+  url_launcher: any
+  shared_value: any
+  intl: any
+  any_image_view: ^1.6.0
+  easy_debounce: any
+  water_drop_nav_bar: any
+  font_awesome_flutter: any
+  omni_datetime_picker: any
+  delayed_display: any
+  flutter_spinkit: any
+  skeletonizer: any
+  dropdown_search: ^6.0.2
+  animated_bottom_navigation_bar: ^1.4.0
+  google_maps_places_autocomplete_widgets: ^1.3.3
+  google_maps_flutter: any
+  image_picker: ^1.1.2
+  clay_containers: ^0.3.4
+  country_code_picker: ^3.3.0
+  flutter_dotenv: any
+  expandable: ^5.0.1
+  file_picker: ^10.3.1
+  geolocator:
+  permission_handler:
+  multiselect: ^0.1.1
+  geocoding: ^4.0.0
+  translator: ^1.0.0
+  socket_io_client: ^2.0.3+1
+  web_socket_channel: ^3.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+#  android_notification_icons: any
+#  icons_launcher: ^3.0.2
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/categoryIcons/
+    - assets/dashboardIcons/
+    - assets/dashboardIcons/h/
+    - assets/dashboardIcons/p/
+    - assets/image/
+    - assets/onboarding/
+    - assets/register/
+    - .env
+    - assets/logo/
+
+#icons_launcher:
+#  image_path: "assets/logo/icon.png"
+#  platforms:
+#    android:
+#      enable: true
+#      image_path: "assets/logo/icon.png"
+#      notification_image: "assets/logo/icon.png"
+#      # adaptive_background_color: '#ffffff'
+#      adaptive_background_image: "assets/logo/icon.png"
+#      adaptive_foreground_image: "assets/logo/icon.png"
+#      adaptive_round_image: "assets/logo/icon.png"
+#      adaptive_monochrome_image: "assets/logo/icon.png"
+#    ios:
+#      enable: true
+#      image_path: "assets/logo/icon.png"
+#      dark_path: "assets/logo/icon.png"
+#      tinted_path: "assets/logo/icon.png"
+#
+#android_notification_icons:
+#  image_path: 'assets/logo/icon.png'
+#  icon_name: 'ic_notification'
