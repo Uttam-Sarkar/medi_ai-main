@@ -62,10 +62,10 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                   borderRadius: 8,
                                   child: CountryCodePicker(
                                     onChanged: (country) =>
-                                        controller.countryCode.value =
-                                            country.dialCode ?? '',
+                                    controller.countryCode.value =
+                                        country.dialCode ?? '',
                                     initialSelection:
-                                        controller.countryCode.value.isNotEmpty
+                                    controller.countryCode.value.isNotEmpty
                                         ? controller.countryCode.value
                                         : '+1',
                                     favorite: ['+1', '+88'],
@@ -128,7 +128,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                             ),
                             SizedBox(height: 16),
                             Obx(
-                              () => ClayContainer(
+                                  () => ClayContainer(
                                 depth: 16,
                                 spread: 2,
                                 color: AppColors.primaryColor,
@@ -138,7 +138,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                   child: TextField(
                                     controller: controller.passwordController,
                                     obscureText:
-                                        !controller.isPasswordVisible.value,
+                                    !controller.isPasswordVisible.value,
                                     decoration: InputDecoration(
                                       labelText: 'Password'.tr,
                                       border: InputBorder.none,
@@ -154,9 +154,9 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                         ),
                                         onPressed: () {
                                           controller.isPasswordVisible.value =
-                                              !controller
-                                                  .isPasswordVisible
-                                                  .value;
+                                          !controller
+                                              .isPasswordVisible
+                                              .value;
                                         },
                                       ),
                                     ),
@@ -170,7 +170,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                               height: 45,
                               child: ElevatedButton(
                                 onPressed: () {
-                                    controller.registerUser();
+                                  controller.registerUser();
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: AppColors.primaryAccentColor,
@@ -220,7 +220,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                       ),
                                       child: TextField(
                                         controller:
-                                            controller.firstNameController,
+                                        controller.firstNameController,
                                         decoration: InputDecoration(
                                           labelText: 'First Name'.tr,
                                           border: InputBorder.none,
@@ -245,7 +245,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                       ),
                                       child: TextField(
                                         controller:
-                                            controller.lastNameController,
+                                        controller.lastNameController,
                                         decoration: InputDecoration(
                                           labelText: 'Last Name'.tr,
                                           border: InputBorder.none,
@@ -329,19 +329,19 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                       ),
                                       child: DropdownButtonFormField<String>(
                                         // initialValue:
-                                        //     controller.gender.value.isEmpty
+                                        // controller.gender.value.isEmpty
                                         //     ? null
                                         //     : controller.gender.value,
                                         items: ['Male', 'Female']
                                             .map(
                                               (g) => DropdownMenuItem(
-                                                value: g,
-                                                child: Text(g),
-                                              ),
-                                            )
+                                            value: g,
+                                            child: Text(g),
+                                          ),
+                                        )
                                             .toList(),
                                         onChanged: (val) =>
-                                            controller.gender.value = val ?? '',
+                                        controller.gender.value = val ?? '',
                                         decoration: InputDecoration(
                                           labelText: 'Gender'.tr,
                                           border: InputBorder.none,
@@ -366,31 +366,31 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                       ),
                                       child: DropdownButtonFormField<String>(
                                         // initialValue:
-                                        //     controller.bloodType.value.isEmpty
+                                        // controller.bloodType.value.isEmpty
                                         //     ? null
                                         //     : controller.bloodType.value,
                                         items:
-                                            [
-                                                  'A+',
-                                                  'A-',
-                                                  'B+',
-                                                  'B-',
-                                                  'AB+',
-                                                  'AB-',
-                                                  'O+',
-                                                  'O-',
-                                                  'I\'m not sure',
-                                                ]
-                                                .map(
-                                                  (b) => DropdownMenuItem(
-                                                    value: b,
-                                                    child: Text(b),
-                                                  ),
-                                                )
-                                                .toList(),
+                                        [
+                                          'A+',
+                                          'A-',
+                                          'B+',
+                                          'B-',
+                                          'AB+',
+                                          'AB-',
+                                          'O+',
+                                          'O-',
+                                          'I\'m not sure',
+                                        ]
+                                            .map(
+                                              (b) => DropdownMenuItem(
+                                            value: b,
+                                            child: Text(b),
+                                          ),
+                                        )
+                                            .toList(),
                                         onChanged: (val) =>
-                                            controller.bloodType.value =
-                                                val ?? '',
+                                        controller.bloodType.value =
+                                            val ?? '',
                                         decoration: InputDecoration(
                                           labelText: 'Blood Type'.tr,
                                           border: InputBorder.none,
@@ -577,7 +577,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                       ),
                                       child: TextField(
                                         controller:
-                                            controller.postalCodeController,
+                                        controller.postalCodeController,
                                         decoration: InputDecoration(
                                           labelText: 'Postal Code'.tr,
                                           border: InputBorder.none,
@@ -602,7 +602,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.white12,
                                         foregroundColor:
-                                            AppColors.primaryAccentColor,
+                                        AppColors.primaryAccentColor,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(
                                             8,
@@ -622,7 +622,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                       onPressed: controller.goToNextPage,
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor:
-                                            AppColors.primaryAccentColor,
+                                        AppColors.primaryAccentColor,
                                         foregroundColor: Colors.white,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(
@@ -660,62 +660,72 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                               ),
                             ),
                             SizedBox(height: 24),
-                            ClayContainer(
-                              depth: 16,
-                              spread: 2,
-                              color: AppColors.primaryColor,
-                              borderRadius: 8,
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(vertical: 2),
-                                child: DropdownButtonFormField<String>(
-                                  value:
-                                      controller
-                                          .currentMedicalCondition
-                                          .value
-                                          .isEmpty
-                                      ? null
-                                      : controller
+
+                            SingleChildScrollView(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ClayContainer(
+                                    depth: 16,
+                                    spread: 2,
+                                    color: AppColors.primaryColor,
+                                    borderRadius: 8,
+                                    child: Padding(
+                                      padding: EdgeInsets.symmetric(vertical: 2),
+                                      child: DropdownButtonFormField<String>(
+                                        value:
+                                        controller
+                                            .currentMedicalCondition
+                                            .value
+                                            .isEmpty
+                                            ? null
+                                            : controller
                                             .currentMedicalCondition
                                             .value,
-                                  items:
-                                      [
-                                            'Select an option'.tr,
-                                            'Healthy individual'.tr,
-                                            'Healthy under medication'.tr,
-                                            'Healthy undergoing medical preventive'
-                                                .tr,
-                                            'Healthy undergoing medical treatment'
-                                                .tr,
-                                            'Healthy with a medical history'.tr,
-                                            'Healthy with disability'.tr,
-                                            'Unhealthy individual'.tr,
-                                            'Unhealthy undergoing medical treatment'
-                                                .tr,
-                                          ]
-                                          .map(
-                                            (c) => DropdownMenuItem(
-                                              value: c == 'Select an option'
-                                                  ? ''
-                                                  : c,
-                                              child: Text(c),
-                                            ),
-                                          )
-                                          .toList(),
-                                  onChanged: (val) =>
-                                      controller.currentMedicalCondition.value =
-                                          val ?? '',
-                                  decoration: InputDecoration(
-                                    labelText:
-                                        'What is your current medical condition?'
-                                            .tr,
-                                    border: InputBorder.none,
-                                    contentPadding: EdgeInsets.symmetric(
-                                      horizontal: 12,
+                                        isExpanded: true,
+                                        items:
+                                        [
+                                          'Select an option'.tr,
+                                          'Healthy individual'.tr,
+                                          'Healthy under medication'.tr,
+                                          'Healthy undergoing medical preventive'
+                                              .tr,
+                                          'Healthy undergoing medical treatment'
+                                              .tr,
+                                          'Healthy with a medical history'.tr,
+                                          'Healthy with disability'.tr,
+                                          'Unhealthy individual'.tr,
+                                          'Unhealthy undergoing medical treatment'
+                                              .tr,
+                                        ]
+                                            .map(
+                                              (c) => DropdownMenuItem(
+                                            value: c == 'Select an option'
+                                                ? ''
+                                                : c,
+                                            child: Text(c),
+                                          ),
+                                        )
+                                            .toList(),
+                                        onChanged: (val) =>
+                                        controller.currentMedicalCondition.value =
+                                            val ?? '',
+                                        decoration: InputDecoration(
+                                          labelText:
+                                          'What is your current medical condition?'
+                                              .tr,
+                                          border: InputBorder.none,
+                                          contentPadding: EdgeInsets.symmetric(
+                                            horizontal: 12,
+                                          ),
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),
+                                ],
                               ),
                             ),
+
                             SizedBox(height: 16),
                             ClayContainer(
                               depth: 16,
@@ -811,23 +821,23 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                 padding: EdgeInsets.symmetric(vertical: 2),
                                 child: DropdownButtonFormField<String>(
                                   value:
-                                      controller.underMedication.value.isEmpty
+                                  controller.underMedication.value.isEmpty
                                       ? null
                                       : controller.underMedication.value,
                                   items:
-                                      [
-                                            "Not on Medication",
-                                            "Occasionally on Medication",
-                                            "Currently on Medication",
-                                            "On Daily Medication",
-                                          ]
-                                          .map(
-                                            (c) => DropdownMenuItem(
-                                              value: c,
-                                              child: Text(c),
-                                            ),
-                                          )
-                                          .toList(),
+                                  [
+                                    "Not on Medication",
+                                    "Occasionally on Medication",
+                                    "Currently on Medication",
+                                    "On Daily Medication",
+                                  ]
+                                      .map(
+                                        (c) => DropdownMenuItem(
+                                      value: c,
+                                      child: Text(c),
+                                    ),
+                                  )
+                                      .toList(),
                                   onChanged: (val) {
                                     controller.underMedication.value = val ?? '';
                                     // Clear medication types if "Not on Medication" is selected
@@ -837,7 +847,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                   },
                                   decoration: InputDecoration(
                                     labelText:
-                                        'Are you under any medications?'.tr,
+                                    'Are you under any medications?'.tr,
                                     border: InputBorder.none,
                                     contentPadding: EdgeInsets.symmetric(
                                       horizontal: 12,
@@ -848,7 +858,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                             ),
                             // Show medication types multi-select if not "Not on Medication"
                             Obx(() {
-                              if (controller.underMedication.value.isNotEmpty && 
+                              if (controller.underMedication.value.isNotEmpty &&
                                   controller.underMedication.value != "Not on Medication") {
                                 return Column(
                                   children: [
@@ -864,7 +874,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                           label: 'What type of medications are you taking?'.tr,
                                           options: [
                                             "Antibiotics",
-                                            "Antipyretics", 
+                                            "Antipyretics",
                                             "Antacids and Gastrointestinal Medications",
                                             "Cardiovascular Medications",
                                             "Respiratory Medications",
@@ -893,7 +903,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.white12,
                                         foregroundColor:
-                                            AppColors.primaryAccentColor,
+                                        AppColors.primaryAccentColor,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(
                                             8,
@@ -913,7 +923,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                       onPressed: controller.goToNextPage,
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor:
-                                            AppColors.primaryAccentColor,
+                                        AppColors.primaryAccentColor,
                                         foregroundColor: Colors.white,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(
@@ -952,15 +962,15 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                             ),
                             SizedBox(height: 24),
                             Obx(
-                              () => Column(
+                                  () => Column(
                                 children: List.generate(
                                   controller.vaccinations.length,
-                                  (index) {
+                                      (index) {
                                     final entry =
-                                        controller.vaccinations[index];
+                                    controller.vaccinations[index];
                                     return Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         ClayContainer(
                                           depth: 16,
@@ -973,32 +983,32 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                             ),
                                             child: DropdownButtonFormField<String>(
                                               value:
-                                                  entry
-                                                      .vaccineType
-                                                      .value
-                                                      .isEmpty
+                                              entry
+                                                  .vaccineType
+                                                  .value
+                                                  .isEmpty
                                                   ? null
                                                   : entry.vaccineType.value,
                                               items: ["Yes", "No"]
                                                   .map(
                                                     (c) => DropdownMenuItem(
-                                                      value: c,
-                                                      child: Text(c),
-                                                    ),
-                                                  )
+                                                  value: c,
+                                                  child: Text(c),
+                                                ),
+                                              )
                                                   .toList(),
                                               onChanged: (val) =>
-                                                  entry.vaccineType.value =
-                                                      val ?? '',
+                                              entry.vaccineType.value =
+                                                  val ?? '',
                                               decoration: InputDecoration(
                                                 labelText:
-                                                    'Any vaccinations you might have had in the past 12 Month?'
-                                                        .tr,
+                                                'Any vaccinations you might have had in the past 12 Month?'
+                                                    .tr,
                                                 border: InputBorder.none,
                                                 contentPadding:
-                                                    EdgeInsets.symmetric(
-                                                      horizontal: 12,
-                                                    ),
+                                                EdgeInsets.symmetric(
+                                                  horizontal: 12,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -1015,14 +1025,14 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                             ),
                                             child: TextField(
                                               controller:
-                                                  entry.vaccineNameController,
+                                              entry.vaccineNameController,
                                               decoration: InputDecoration(
                                                 labelText: 'Vaccines'.tr,
                                                 border: InputBorder.none,
                                                 contentPadding:
-                                                    EdgeInsets.symmetric(
-                                                      horizontal: 12,
-                                                    ),
+                                                EdgeInsets.symmetric(
+                                                  horizontal: 12,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -1049,7 +1059,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                         SizedBox(height: 8),
                                         Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.end,
+                                          MainAxisAlignment.end,
                                           children: [
                                             if (index > 0)
                                               IconButton(
@@ -1059,8 +1069,8 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                                 ),
                                                 onPressed: () => controller
                                                     .removeVaccinationEntry(
-                                                      index,
-                                                    ),
+                                                  index,
+                                                ),
                                               ),
                                           ],
                                         ),
@@ -1079,7 +1089,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                   label: Text('Add'.tr),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor:
-                                        AppColors.primaryAccentColor,
+                                    AppColors.primaryAccentColor,
                                     foregroundColor: Colors.white,
                                     elevation: 0,
                                   ),
@@ -1097,7 +1107,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.white12,
                                         foregroundColor:
-                                            AppColors.primaryAccentColor,
+                                        AppColors.primaryAccentColor,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(
                                             8,
@@ -1117,7 +1127,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                       onPressed: controller.goToNextPage,
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor:
-                                            AppColors.primaryAccentColor,
+                                        AppColors.primaryAccentColor,
                                         foregroundColor: Colors.white,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(
@@ -1156,15 +1166,15 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                             ),
                             SizedBox(height: 24),
                             Obx(
-                              () => Column(
+                                  () => Column(
                                 children: List.generate(
                                   controller.emergencyContacts.length,
-                                  (index) {
+                                      (index) {
                                     final entry =
-                                        controller.emergencyContacts[index];
+                                    controller.emergencyContacts[index];
                                     return Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         ClayContainer(
                                           depth: 16,
@@ -1179,13 +1189,13 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                               controller: entry.nameController,
                                               decoration: InputDecoration(
                                                 labelText:
-                                                    'Name of Emergency Contact'
-                                                        .tr,
+                                                'Name of Emergency Contact'
+                                                    .tr,
                                                 border: InputBorder.none,
                                                 contentPadding:
-                                                    EdgeInsets.symmetric(
-                                                      horizontal: 12,
-                                                    ),
+                                                EdgeInsets.symmetric(
+                                                  horizontal: 12,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -1204,13 +1214,13 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                               controller: entry.phoneController,
                                               decoration: InputDecoration(
                                                 labelText:
-                                                    'Phone Number with country code'
-                                                        .tr,
+                                                'Phone Number with country code'
+                                                    .tr,
                                                 border: InputBorder.none,
                                                 contentPadding:
-                                                    EdgeInsets.symmetric(
-                                                      horizontal: 12,
-                                                    ),
+                                                EdgeInsets.symmetric(
+                                                  horizontal: 12,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -1226,48 +1236,48 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                               vertical: 2,
                                             ),
                                             child: Obx(
-                                              () =>
+                                                  () =>
                                                   DropdownButtonFormField<
-                                                    String
+                                                      String
                                                   >(
                                                     value:
-                                                        entry
-                                                            .relationship
-                                                            .value
-                                                            .isEmpty
+                                                    entry
+                                                        .relationship
+                                                        .value
+                                                        .isEmpty
                                                         ? null
                                                         : entry
-                                                              .relationship
-                                                              .value,
+                                                        .relationship
+                                                        .value,
                                                     items:
-                                                        [
-                                                              'Family'.tr,
-                                                              'Friend'.tr,
-                                                              'Doctor'.tr,
-                                                            ]
-                                                            .map(
-                                                              (c) =>
-                                                                  DropdownMenuItem(
-                                                                    value: c,
-                                                                    child: Text(
-                                                                      c,
-                                                                    ),
-                                                                  ),
-                                                            )
-                                                            .toList(),
+                                                    [
+                                                      'Family'.tr,
+                                                      'Friend'.tr,
+                                                      'Doctor'.tr,
+                                                    ]
+                                                        .map(
+                                                          (c) =>
+                                                          DropdownMenuItem(
+                                                            value: c,
+                                                            child: Text(
+                                                              c,
+                                                            ),
+                                                          ),
+                                                    )
+                                                        .toList(),
                                                     onChanged: (val) =>
-                                                        entry
-                                                                .relationship
-                                                                .value =
-                                                            val ?? '',
+                                                    entry
+                                                        .relationship
+                                                        .value =
+                                                        val ?? '',
                                                     decoration: InputDecoration(
                                                       labelText:
-                                                          'Relationship'.tr,
+                                                      'Relationship'.tr,
                                                       border: InputBorder.none,
                                                       contentPadding:
-                                                          EdgeInsets.symmetric(
-                                                            horizontal: 12,
-                                                          ),
+                                                      EdgeInsets.symmetric(
+                                                        horizontal: 12,
+                                                      ),
                                                     ),
                                                   ),
                                             ),
@@ -1289,9 +1299,9 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                                 labelText: 'Email'.tr,
                                                 border: InputBorder.none,
                                                 contentPadding:
-                                                    EdgeInsets.symmetric(
-                                                      horizontal: 12,
-                                                    ),
+                                                EdgeInsets.symmetric(
+                                                  horizontal: 12,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -1308,14 +1318,14 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                             ),
                                             child: TextField(
                                               controller:
-                                                  entry.mediAiIdController,
+                                              entry.mediAiIdController,
                                               decoration: InputDecoration(
                                                 labelText: 'MediAi ID'.tr,
                                                 border: InputBorder.none,
                                                 contentPadding:
-                                                    EdgeInsets.symmetric(
-                                                      horizontal: 12,
-                                                    ),
+                                                EdgeInsets.symmetric(
+                                                  horizontal: 12,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -1323,7 +1333,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                         SizedBox(height: 8),
                                         Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.end,
+                                          MainAxisAlignment.end,
                                           children: [
                                             if (index > 0)
                                               IconButton(
@@ -1333,8 +1343,8 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                                 ),
                                                 onPressed: () => controller
                                                     .removeEmergencyContactEntry(
-                                                      index,
-                                                    ),
+                                                  index,
+                                                ),
                                               ),
                                           ],
                                         ),
@@ -1349,12 +1359,12 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                               children: [
                                 ElevatedButton.icon(
                                   onPressed:
-                                      controller.addEmergencyContactEntry,
+                                  controller.addEmergencyContactEntry,
                                   icon: Icon(Icons.add),
                                   label: Text('Add'.tr),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor:
-                                        AppColors.primaryAccentColor,
+                                    AppColors.primaryAccentColor,
                                     foregroundColor: Colors.white,
                                     elevation: 0,
                                   ),
@@ -1372,7 +1382,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.white12,
                                         foregroundColor:
-                                            AppColors.primaryAccentColor,
+                                        AppColors.primaryAccentColor,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(
                                             8,
@@ -1392,7 +1402,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                       onPressed: controller.goToNextPage,
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor:
-                                            AppColors.primaryAccentColor,
+                                        AppColors.primaryAccentColor,
                                         foregroundColor: Colors.white,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(
@@ -1444,14 +1454,14 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                   items: ['Yes', 'No']
                                       .map(
                                         (s) => DropdownMenuItem(
-                                          value: s,
-                                          child: Text(s),
-                                        ),
-                                      )
+                                      value: s,
+                                      child: Text(s),
+                                    ),
+                                  )
                                       .toList(),
                                   onChanged: (val) =>
-                                      controller.smokingHabits.value =
-                                          val ?? '',
+                                  controller.smokingHabits.value =
+                                      val ?? '',
                                   decoration: InputDecoration(
                                     labelText: 'Smoking Habits'.tr,
                                     border: InputBorder.none,
@@ -1472,28 +1482,28 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                 padding: EdgeInsets.symmetric(vertical: 2),
                                 child: DropdownButtonFormField<String>(
                                   value:
-                                      controller
-                                          .alcoholConsumption
-                                          .value
-                                          .isEmpty
+                                  controller
+                                      .alcoholConsumption
+                                      .value
+                                      .isEmpty
                                       ? null
                                       : controller.alcoholConsumption.value,
                                   items:
-                                      [
-                                            "Not drinking",
-                                            "Occasionally drinking",
-                                            "Frequently drinking",
-                                          ]
-                                          .map(
-                                            (a) => DropdownMenuItem(
-                                              value: a,
-                                              child: Text(a),
-                                            ),
-                                          )
-                                          .toList(),
+                                  [
+                                    "Not drinking",
+                                    "Occasionally drinking",
+                                    "Frequently drinking",
+                                  ]
+                                      .map(
+                                        (a) => DropdownMenuItem(
+                                      value: a,
+                                      child: Text(a),
+                                    ),
+                                  )
+                                      .toList(),
                                   onChanged: (val) =>
-                                      controller.alcoholConsumption.value =
-                                          val ?? '',
+                                  controller.alcoholConsumption.value =
+                                      val ?? '',
                                   decoration: InputDecoration(
                                     labelText: 'Alcohol Consumption'.tr,
                                     border: InputBorder.none,
@@ -1514,27 +1524,28 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                 padding: EdgeInsets.symmetric(vertical: 2),
                                 child: DropdownButtonFormField<String>(
                                   value:
-                                      controller.physicalActivity.value.isEmpty
+                                  controller.physicalActivity.value.isEmpty
                                       ? null
                                       : controller.physicalActivity.value,
+                                  isExpanded: true,
                                   items:
-                                      [
-                                            "Sedentary (little or no exercise)",
-                                            "Lightly Active (light exercise or sports 1-3 days a week)",
-                                            "Moderately Active (moderate exercise or sports 3-5 days a week)",
-                                            "Very Active (hard exercise or sports 6-7 days a week)",
-                                            "Super Active (very hard exercise, physical job, or training)",
-                                          ]
-                                          .map(
-                                            (p) => DropdownMenuItem(
-                                              value: p,
-                                              child: Text(p),
-                                            ),
-                                          )
-                                          .toList(),
+                                  [
+                                    "Sedentary (little or no exercise)",
+                                    "Lightly Active (light exercise or sports 1-3 days a week)",
+                                    "Moderately Active (moderate exercise or sports 3-5 days a week)",
+                                    "Very Active (hard exercise or sports 6-7 days a week)",
+                                    "Super Active (very hard exercise, physical job, or training)",
+                                  ]
+                                      .map(
+                                        (p) => DropdownMenuItem(
+                                      value: p,
+                                      child: Text(p),
+                                    ),
+                                  )
+                                      .toList(),
                                   onChanged: (val) =>
-                                      controller.physicalActivity.value =
-                                          val ?? '',
+                                  controller.physicalActivity.value =
+                                      val ?? '',
                                   decoration: InputDecoration(
                                     labelText: 'Physical Activity Level'.tr,
                                     border: InputBorder.none,
@@ -1557,25 +1568,26 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                   value: controller.preferences.value.isEmpty
                                       ? null
                                       : controller.preferences.value,
+                                  isExpanded: true,
                                   items:
-                                      [
-                                            "None (No preferences or restrictions)",
-                                            "Vegetarian",
-                                            "Vegan",
-                                            "Gluten-Free",
-                                            "Dairy-Free",
-                                            "Nut-Free",
-                                            "Other",
-                                          ]
-                                          .map(
-                                            (p) => DropdownMenuItem(
-                                              value: p,
-                                              child: Text(p),
-                                            ),
-                                          )
-                                          .toList(),
+                                  [
+                                    "None (No preferences or restrictions)",
+                                    "Vegetarian",
+                                    "Vegan",
+                                    "Gluten-Free",
+                                    "Dairy-Free",
+                                    "Nut-Free",
+                                    "Other",
+                                  ]
+                                      .map(
+                                        (p) => DropdownMenuItem(
+                                      value: p,
+                                      child: Text(p),
+                                    ),
+                                  )
+                                      .toList(),
                                   onChanged: (val) =>
-                                      controller.preferences.value = val ?? '',
+                                  controller.preferences.value = val ?? '',
                                   decoration: InputDecoration(
                                     labelText: 'Preferences/Restrictions'.tr,
                                     border: InputBorder.none,
@@ -1597,7 +1609,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.white12,
                                         foregroundColor:
-                                            AppColors.primaryAccentColor,
+                                        AppColors.primaryAccentColor,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(
                                             8,
@@ -1617,7 +1629,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                       onPressed: controller.goToNextPage,
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor:
-                                            AppColors.primaryAccentColor,
+                                        AppColors.primaryAccentColor,
                                         foregroundColor: Colors.white,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(
@@ -1668,12 +1680,12 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                               ),
                             ),
                             Obx(
-                              () => Wrap(
+                                  () => Wrap(
                                 spacing: 8,
                                 runSpacing: 8,
                                 children: List.generate(
                                   controller.uploadedImages.length,
-                                  (index) => Stack(
+                                      (index) => Stack(
                                     alignment: Alignment.topRight,
                                     children: [
                                       ClipRRect(
@@ -1737,7 +1749,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.white12,
                                         foregroundColor:
-                                            AppColors.primaryAccentColor,
+                                        AppColors.primaryAccentColor,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(
                                             8,
@@ -1757,7 +1769,7 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                                       onPressed: controller.submitRegistration,
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor:
-                                            AppColors.primaryAccentColor,
+                                        AppColors.primaryAccentColor,
                                         foregroundColor: Colors.white,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(
@@ -1836,47 +1848,55 @@ class PatientRegistrationView extends GetView<PatientRegistrationController> {
                   ),
                 );
               }
-              return Wrap(
-                spacing: 4,
-                runSpacing: 4,
-                children: selectedList.map<Widget>((value) {
-                  return Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryAccentColor.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: AppColors.primaryAccentColor.withOpacity(0.3),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          value,
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: AppColors.primaryAccentColor,
-                            fontWeight: FontWeight.w500,
+              return ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight:120,
+                ),
+                child: SingleChildScrollView(
+
+                  child: Wrap(
+                    spacing: 4,
+                    runSpacing: 4,
+                    children: selectedList.map<Widget>((value) {
+                      return Container(
+                        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryAccentColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: AppColors.primaryAccentColor.withOpacity(0.3),
                           ),
                         ),
-                        SizedBox(width: 4),
-                        GestureDetector(
-                          onTap: () {
-                            final newValues = List<String>.from(selectedValues);
-                            newValues.remove(value);
-                            selectedValues.assignAll(newValues);
-                          },
-                          child: Icon(
-                            Icons.close,
-                            size: 14,
-                            color: AppColors.primaryAccentColor,
-                          ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              value,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: AppColors.primaryAccentColor,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            SizedBox(width: 4),
+                            GestureDetector(
+                              onTap: () {
+                                final newValues = List<String>.from(selectedValues);
+                                newValues.remove(value);
+                                selectedValues.assignAll(newValues);
+                              },
+                              child: Icon(
+                                Icons.close,
+                                size: 14,
+                                color: AppColors.primaryAccentColor,
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  );
-                }).toList(),
+                      );
+                    }).toList(),
+                  ),
+                ),
               );
             },
           ),

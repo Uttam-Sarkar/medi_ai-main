@@ -83,7 +83,7 @@ class RegisterView extends GetView<RegisterController> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(
                         3,
-                        (index) => Container(
+                            (index) => Container(
                           margin: const EdgeInsets.symmetric(horizontal: 4),
                           width: 10,
                           height: 10,
@@ -226,11 +226,11 @@ class RegisterView extends GetView<RegisterController> {
                           ),
                         ),
                         onPressed:
-                            (controller.agreeTerms && controller.agreePrivacy)
-                                ? () {
-                                    controller.showUserTypeSelectionSection();
-                                  }
-                                : null,
+                        (controller.agreeTerms && controller.agreePrivacy)
+                            ? () {
+                          controller.showUserTypeSelectionSection();
+                        }
+                            : null,
                         child: Text(
                           'Continue'.tr,
                           style: TextStyle(
@@ -258,67 +258,70 @@ class RegisterView extends GetView<RegisterController> {
                       ),
                     ),
                     const SizedBox(height: 24),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: UserType.values.map((type) {
-                        final label = type == UserType.patient
-                            ? 'Patient'.tr
-                            : type == UserType.hospital
-                                ? 'Hospital'.tr
-                                : 'Ambulance'.tr;
-                        final icon = type == UserType.patient
-                            ? FontAwesomeIcons.user
-                            : type == UserType.hospital
-                                ? FontAwesomeIcons.hospital
-                                : FontAwesomeIcons.ambulance;
-                        final isSelected = controller.selectedUserType == type;
-                        return GestureDetector(
-                          onTap: () => controller.selectUserType(type),
-                          child: Card(
-                            color: isSelected
-                                ? AppColors.primaryAccentColor
-                                : Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
-                              side: BorderSide(
-                                color: isSelected
-                                    ? AppColors.primaryAccentColor
-                                    : Colors.transparent,
-                                width: 2,
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: UserType.values.map((type) {
+                          final label = type == UserType.patient
+                              ? 'Patient'.tr
+                              : type == UserType.hospital
+                              ? 'Hospital'.tr
+                              : 'Ambulance'.tr;
+                          final icon = type == UserType.patient
+                              ? FontAwesomeIcons.user
+                              : type == UserType.hospital
+                              ? FontAwesomeIcons.hospital
+                              : FontAwesomeIcons.ambulance;
+                          final isSelected = controller.selectedUserType == type;
+                          return GestureDetector(
+                            onTap: () => controller.selectUserType(type),
+                            child: Card(
+                              color: isSelected
+                                  ? AppColors.primaryAccentColor
+                                  : Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                                side: BorderSide(
+                                  color: isSelected
+                                      ? AppColors.primaryAccentColor
+                                      : Colors.transparent,
+                                  width: 2,
+                                ),
                               ),
-                            ),
-                            elevation: isSelected ? 8 : 2,
-                            child: Container(
-                              width: 100.h,
-                              height: 100.h,
-                              alignment: Alignment.center,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  FaIcon(
-                                    icon,
-                                    size: 40,
-                                    color: isSelected
-                                        ? Colors.white
-                                        : AppColors.primaryAccentColor,
-                                  ),
-                                  const SizedBox(height: 16),
-                                  Text(
-                                    label,
-                                    style: TextStyle(
+                              elevation: isSelected ? 8 : 2,
+                              child: Container(
+                                width: 100.h,
+                                height: 100.h,
+                                alignment: Alignment.center,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    FaIcon(
+                                      icon,
+                                      size: 40,
                                       color: isSelected
                                           ? Colors.white
                                           : AppColors.primaryAccentColor,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14,
                                     ),
-                                  ),
-                                ],
+                                    const SizedBox(height: 16),
+                                    Text(
+                                      label,
+                                      style: TextStyle(
+                                        color: isSelected
+                                            ? Colors.white
+                                            : AppColors.primaryAccentColor,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      }).toList(),
+                          );
+                        }).toList(),
+                      ),
                     ),
                     const SizedBox(height: 32),
                     SizedBox(
@@ -346,22 +349,22 @@ class RegisterView extends GetView<RegisterController> {
                         ),
                         onPressed: controller.selectedUserType != null
                             ? () {
-                                // Handle registration continue with selected user type
-                                printLog(
-                                  'Continue with user type: ${controller.selectedUserType}',
-                                );
+                          // Handle registration continue with selected user type
+                          printLog(
+                            'Continue with user type: ${controller.selectedUserType}',
+                          );
 
-                                if (controller.selectedUserType ==
-                                    UserType.patient) {
-                                  Get.toNamed(Routes.PATIENT_REGISTRATION);
-                                } else if (controller.selectedUserType ==
-                                    UserType.hospital) {
-                                  Get.toNamed(Routes.HOSPITAL_REGISTRATION);
-                                } else if (controller.selectedUserType ==
-                                    UserType.ambulance) {
-                                  Get.toNamed(Routes.AMBULANCE);
-                                }
-                              }
+                          if (controller.selectedUserType ==
+                              UserType.patient) {
+                            Get.toNamed(Routes.PATIENT_REGISTRATION);
+                          } else if (controller.selectedUserType ==
+                              UserType.hospital) {
+                            Get.toNamed(Routes.HOSPITAL_REGISTRATION);
+                          } else if (controller.selectedUserType ==
+                              UserType.ambulance) {
+                            Get.toNamed(Routes.AMBULANCE);
+                          }
+                        }
                             : null,
                         child: Text(
                           'Continue'.tr,
