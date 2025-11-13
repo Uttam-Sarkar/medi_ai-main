@@ -1,0 +1,519 @@
+{
+  "info": {
+    "name": "MediAI API Collection",
+    "_postman_id": "mediai-api-collection",
+    "description": "Complete API collection for MediAI Flutter application",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"phoneNumber\": \"+1234567890\",\n  \"password\": \"SecurePass123!\",\n  \"type\": \"patient\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"bloodGroup\": \"O+\",\n  \"address\": \"123 Main St, City\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "register"]
+            },
+            "description": "Register a new user (patient, hospital, doctor, etc.)"
+          }
+        },
+        {
+          "name": "Login User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const response = pm.response.json();",
+                  "    pm.environment.set(\"token\", response.token);",
+                  "    pm.environment.set(\"userId\", response.user._id);",
+                  "    pm.environment.set(\"mediid\", response.user.mediid);",
+                  "    console.log(\"Token saved:\", response.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"SecurePass123!\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "login"]
+            },
+            "description": "Login and get authentication token (auto-saves to environment)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "User Management",
+      "item": [
+        {
+          "name": "Get User Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "profile"]
+            },
+            "description": "Get current logged-in user's profile"
+          }
+        },
+        {
+          "name": "Update User Details",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"updatedFields\": {\n    \"name\": \"John Updated Doe\",\n    \"phoneNumber\": \"+1987654321\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/update-details",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "update-details"]
+            },
+            "description": "Update user information"
+          }
+        },
+        {
+          "name": "Get Hospitals",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"{{userId}}\",\n  \"page\": 1,\n  \"searchTerm\": \"\",\n  \"specialtyRequired\": \"cardiology\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/get-hospitals",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "get-hospitals"]
+            },
+            "description": "Search for hospitals with optional filters"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Patient Management",
+      "item": [
+        {
+          "name": "Add Patient (Send Connection Request)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"{{userId}}\",\n  \"mediid\": \"MED123456\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/add-patient",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "add-patient"]
+            },
+            "description": "Send connection request to a patient using their MediID"
+          }
+        },
+        {
+          "name": "Handle Invitation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"{{userId}}\",\n  \"hospitalId\": \"507f1f77bcf86cd799439012\",\n  \"action\": \"accept\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/handle-invitation",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "handle-invitation"]
+            },
+            "description": "Accept or reject hospital connection request (action: 'accept' or 'reject')"
+          }
+        },
+        {
+          "name": "Remove Patient",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"507f1f77bcf86cd799439011\",\n  \"hospitalId\": \"507f1f77bcf86cd799439012\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/remove-patient",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "remove-patient"]
+            },
+            "description": "Remove patient-hospital connection"
+          }
+        }
+      ]
+    },
+    {
+      "name": "AI Chat",
+      "item": [
+        {
+          "name": "Chat with AI Assistant",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"msg\": \"I have been experiencing headache and fever for 2 days\",\n  \"lang\": \"en\",\n  \"role\": \"patient\",\n  \"use_claude\": false,\n  \"userContext\": {\n    \"medicalHistory\": [],\n    \"medications\": [],\n    \"allergies\": [],\n    \"age\": 30,\n    \"gender\": \"male\"\n  }\n}"
+            },
+            "url": {
+              "raw": "https://mediai.tech/api/chat/assistant",
+              "protocol": "https",
+              "host": ["mediai", "tech"],
+              "path": ["api", "chat", "assistant"]
+            },
+            "description": "Send message to AI assistant (use_claude: false for OpenAI, true for Claude)"
+          }
+        },
+        {
+          "name": "Get Chat Summary",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"I have chest pain\",\n      \"timestamp\": \"2025-11-10T10:30:00.000Z\"\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"Tell me more about your symptoms...\",\n      \"timestamp\": \"2025-11-10T10:30:15.000Z\"\n    }\n  ],\n  \"userId\": \"{{userId}}\",\n  \"language\": \"en\"\n}"
+            },
+            "url": {
+              "raw": "https://mediai.tech/api/chat/summary",
+              "protocol": "https",
+              "host": ["mediai", "tech"],
+              "path": ["api", "chat", "summary"]
+            },
+            "description": "Generate summary of chat conversation history"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Form Management",
+      "item": [
+        {
+          "name": "Create Form",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"{{userId}}\",\n  \"formName\": \"Patient Intake Form\",\n  \"fields\": [\n    {\n      \"label\": \"Full Name\",\n      \"type\": \"text\",\n      \"required\": true,\n      \"options\": []\n    },\n    {\n      \"label\": \"Date of Birth\",\n      \"type\": \"date\",\n      \"required\": true,\n      \"options\": []\n    },\n    {\n      \"label\": \"Symptoms\",\n      \"type\": \"select\",\n      \"required\": true,\n      \"options\": [\"Fever\", \"Cough\", \"Headache\", \"Fatigue\"]\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "https://mediai.tech/api/form/create",
+              "protocol": "https",
+              "host": ["mediai", "tech"],
+              "path": ["api", "form", "create"]
+            },
+            "description": "Create a new medical form (hospital users only)"
+          }
+        },
+        {
+          "name": "Save Temp Form",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"{{userId}}\",\n  \"formName\": \"Draft Patient Form\",\n  \"fields\": [\n    {\n      \"label\": \"Patient Name\",\n      \"type\": \"text\",\n      \"required\": true\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "https://mediai.tech/api/tempForm/",
+              "protocol": "https",
+              "host": ["mediai", "tech"],
+              "path": ["api", "tempForm", ""]
+            },
+            "description": "Save form as draft (temporary form)"
+          }
+        },
+        {
+          "name": "Get Temp Form",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://mediai.tech/api/tempForm/{{userId}}",
+              "protocol": "https",
+              "host": ["mediai", "tech"],
+              "path": ["api", "tempForm", "{{userId}}"]
+            },
+            "description": "Retrieve saved draft form"
+          }
+        },
+        {
+          "name": "Delete Temp Form",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://mediai.tech/api/tempForm/{{userId}}",
+              "protocol": "https",
+              "host": ["mediai", "tech"],
+              "path": ["api", "tempForm", "{{userId}}"]
+            },
+            "description": "Delete saved draft form"
+          }
+        }
+      ]
+    },
+    {
+      "name": "File Upload",
+      "item": [
+        {
+          "name": "Upload File (Cloudinary)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [],
+                  "description": "Select a file to upload (image/PDF/document)"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://mediai.tech/api/invoice/upload",
+              "protocol": "https",
+              "host": ["mediai", "tech"],
+              "path": ["api", "invoice", "upload"]
+            },
+            "description": "Upload medical documents, images, or PDFs to Cloudinary"
+          }
+        }
+      ]
+    },
+    {
+      "name": "News Management",
+      "item": [
+        {
+          "name": "Get All News",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://mediai.tech/api/news/get-news",
+              "protocol": "https",
+              "host": ["mediai", "tech"],
+              "path": ["api", "news", "get-news"]
+            },
+            "description": "Retrieve all news articles"
+          }
+        },
+        {
+          "name": "Add News",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"New Medical Breakthrough\",\n  \"content\": \"Researchers have discovered...\",\n  \"category\": \"cardiology,research\",\n  \"imageUrl\": \"https://example.com/image.jpg\",\n  \"author\": \"Dr. Smith\"\n}"
+            },
+            "url": {
+              "raw": "https://mediai.tech/api/news/add-news",
+              "protocol": "https",
+              "host": ["mediai", "tech"],
+              "path": ["api", "news", "add-news"]
+            },
+            "description": "Create a new news article (admin/hospital users)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Translation",
+      "item": [
+        {
+          "name": "Translate Text",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"item\": \"Hello, how are you?\",\n  \"country\": \"es\"\n}"
+            },
+            "url": {
+              "raw": "https://mediai.tech/api/translate/translator",
+              "protocol": "https",
+              "host": ["mediai", "tech"],
+              "path": ["api", "translate", "translator"]
+            },
+            "description": "Translate text to specified language (language code: es, fr, de, etc.)"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://mediai.tech/api",
+      "type": "string"
+    }
+  ]
+}

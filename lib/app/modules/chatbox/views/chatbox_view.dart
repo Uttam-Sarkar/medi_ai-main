@@ -23,7 +23,8 @@ class ChatboxView extends GetView<ChatboxController> {
                 () => ListView.builder(
                   reverse: true,
                   padding: const EdgeInsets.all(16),
-                  itemCount: controller.messages.length +
+                  itemCount:
+                      controller.messages.length +
                       (controller.isTyping.value ? 1 : 0),
                   itemBuilder: (context, index) {
                     // Show typing indicator as the first item (newest message)
@@ -65,8 +66,9 @@ class ChatboxView extends GetView<ChatboxController> {
                     }
 
                     // Adjust index for actual messages
-                    final messageIndex =
-                        controller.isTyping.value ? index - 1 : index;
+                    final messageIndex = controller.isTyping.value
+                        ? index - 1
+                        : index;
                     final reversedIndex =
                         controller.messages.length - 1 - messageIndex;
                     final message = controller.messages[reversedIndex];
@@ -246,3 +248,5 @@ class ChatboxView extends GetView<ChatboxController> {
     );
   }
 }
+            // "lang": selectedLanguage.$ ?? "en",
+            // "role": userRole.$ ?? "patient",
